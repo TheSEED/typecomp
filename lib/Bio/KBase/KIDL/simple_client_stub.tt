@@ -287,6 +287,7 @@ package [% simple_client_package_name %]::RpcClient;
 use POSIX;
 use strict;
 use LWP::UserAgent;
+use P3ClientUA;
 use JSON::XS;
 
 sub new
@@ -294,7 +295,7 @@ sub new
     my($class) = @_;
 
     my $self = {
-	ua => LWP::UserAgent->new(),
+	ua => P3ClientUA::new_ua(),
 	json => JSON::XS->new->allow_nonref->utf8,
     };
     return bless $self, $class;
